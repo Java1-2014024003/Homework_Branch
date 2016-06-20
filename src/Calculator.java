@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 
@@ -34,6 +35,7 @@ public class Calculator extends JFrame implements ActionListener{
 		display = new JTextField(35);
 		panel = new JPanel();
 		display.setText("0.0");
+		display.setEnabled(true);
 		
 		panel.setLayout(new GridLayout(0, 4, 3, 3));
 		buttons = new JButton[20];
@@ -49,6 +51,7 @@ public class Calculator extends JFrame implements ActionListener{
 					buttons[index].setForeground(Color.cyan);
 				buttons[index].setBackground(Color.darkGray);
 				panel.add(buttons[index]);
+				buttons[index].addActionListener(this);
 				index++;
 				}
 			}
@@ -59,7 +62,7 @@ public class Calculator extends JFrame implements ActionListener{
 		}
 	
 	public void actionPerformed(ActionEvent e) {
-		
+		   	
 		String command = e.getActionCommand();
 		if(command.charAt(0)=='C'){
 			
@@ -95,7 +98,7 @@ public class Calculator extends JFrame implements ActionListener{
 			result += n;
 		else if (operator.equals("-"))
 			result -= n;
-		else if(operator.equals("*"))
+		else if(operator.equals("x"))
 			result *= n;
 		else if(operator.equals("/"))
 			result /= n;
